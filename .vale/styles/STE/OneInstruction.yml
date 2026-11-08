@@ -1,0 +1,9 @@
+# STE: write one instruction in each sentence.
+extends: existence
+message: "'%s' may join two instructions. Write one instruction in each sentence (STE)."
+level: warning
+ignorecase: true
+tokens:
+  - 'and then'
+  - ', then'
+  - 'and also'

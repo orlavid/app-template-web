@@ -1,0 +1,8 @@
+# STE: a procedural sentence has 20 words or fewer.
+# Vale cannot tell a procedure from a description, so this is a warning.
+extends: occurrence
+message: "Sentence has more than 20 words. Procedures must have 20 or fewer (STE)."
+level: warning
+scope: sentence
+max: 20
+token: '[^\s]+'

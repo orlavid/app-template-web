@@ -1,0 +1,10 @@
+# STE: do not use -ing words as nouns. Use the noun or the verb.
+# The pattern catches an -ing word after an article, a determiner or a preposition.
+extends: existence
+message: "'%s' may use an -ing word as a noun. Use a noun or a verb (STE)."
+level: warning
+ignorecase: true
+tokens:
+  - '(?:the|a|an|this|that|these|those|of|for|by|before|after|during|without)\s+\w{2,}ing\b'
+exceptions:
+  - '\w+\s+(?:string|strings|thing|things|nothing|something|anything|everything|king|ring|spring|morning|evening|ceiling|during|bring|sing|warning|warnings)'

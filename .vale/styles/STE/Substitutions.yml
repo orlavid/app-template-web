@@ -1,0 +1,38 @@
+# STE: use the approved word. This is a small project list, not the
+# ASD-STE100 dictionary. Add pairs here when reviews find new ones.
+extends: substitution
+message: "Use '%s' instead of '%s' (STE approved word)."
+level: error
+ignorecase: true
+swap:
+  accomplish: do
+  additional: more
+  approximately: about
+  assist: help
+  attempt: try
+  commence: start
+  demonstrate: show
+  e\.g\.: for example
+  ensure: make sure
+  etc\.: and other items
+  facilitate: help
+  i\.e\.: that is
+  in order to: to
+  indicate: show
+  initiate: start
+  leverage: use
+  modify: change
+  numerous: many
+  obtain: get
+  perform: do
+  prior to: before
+  purchase: buy
+  regarding: about
+  require: need
+  required: necessary
+  requires: needs
+  subsequently: then
+  sufficient: enough
+  terminate: stop
+  utilize: use
+  via: through

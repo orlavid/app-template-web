@@ -1,0 +1,7 @@
+# STE: a paragraph has 6 sentences or fewer.
+extends: occurrence
+message: "Paragraph has more than 6 sentences. Split it (STE)."
+level: error
+scope: paragraph
+max: 6
+token: '\w[.!?]+'
