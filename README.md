@@ -1,5 +1,7 @@
 # Web application template
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/orlavid/app-template-web/badge)](https://scorecard.dev/viewer/?uri=github.com/orlavid/app-template-web)
+
 This repository is the start point for each web application that the build platform makes. Copy it to start a new application.
 
 ## Stack
@@ -85,6 +87,72 @@ To add a project term:
 1. Add the term and its sense to `docs/glossary.md`.
 2. Add the term to `.vale/styles/config/vocabularies/Project/accept.txt`.
 3. Run `npm run docs:lint`.
+
+## Supply chain
+
+These controls protect the code, the dependencies and the release files:
+
+- CI runs the type check, ESLint, Stylelint, Vitest, Vale, Playwright and `npm audit` on each pull request.
+- CodeQL examines the TypeScript code and the workflow files on each pull request and each week.
+- OpenSSF Scorecard examines the repository settings on each push to `main` and each week.
+- Dependabot opens a pull request each week for npm packages, GitHub Actions, Docker images and the dev container.
+- Each workflow pins each action to a full commit SHA. The SLSA generator must use a tag.
+- Each Dockerfile and workflow pins each container image to a digest.
+- Property tests use fast-check to give random input to the contact schema and to `cn`.
+
+### Releases
+
+When a maintainer pushes a `v*` tag, `release.yml` makes these files:
+
+- `app-template-web-<tag>.tar.gz`: the contents of `dist/`.
+- `app-template-web-<tag>.cdx.json`: the CycloneDX software bill of materials.
+- `multiple.intoto.jsonl`: the SLSA build level 3 provenance for the two files above.
+- `ghcr.io/orlavid/app-template-web:<version>`: the container image, with BuildKit provenance and an SBOM.
+
+GitHub also keeps a signed build attestation for each file and for the image.
+
+### Verify a release
+
+1. Install `slsa-verifier` from the SLSA project.
+2. Download the tarball and `multiple.intoto.jsonl` from the release page.
+3. Run this command to verify the SLSA provenance:
+
+```sh
+slsa-verifier verify-artifact app-template-web-v1.0.0.tar.gz \
+  --provenance-path multiple.intoto.jsonl \
+  --source-uri github.com/orlavid/app-template-web \
+  --source-tag v1.0.0
+```
+
+4. Run this command to verify the GitHub attestation of the tarball:
+
+```sh
+gh attestation verify app-template-web-v1.0.0.tar.gz --repo orlavid/app-template-web
+```
+
+5. Run this command to verify the GitHub attestation of the image:
+
+```sh
+gh attestation verify oci://ghcr.io/orlavid/app-template-web:1.0.0 --repo orlavid/app-template-web
+```
+
+Each command exits with code 0 when the file is correct. Do not use a file when a command fails.
+
+### Run the container
+
+The image runs nginx as a user that is not root. It listens on port 8080 and gives `/healthz` for health checks.
+
+1. Run `docker build -t app-template-web .` to make the image.
+2. Run `docker run --rm -p 8080:8080 app-template-web` to start the container.
+3. Open `http://localhost:8080` in a browser.
+
+## Security
+
+`SECURITY.md` tells you how to report a vulnerability. Do not report a vulnerability in a public issue.
+
+## Licence
+
+This software is proprietary. `LICENSE` gives the terms. Do not use, copy, change or distribute it without written permission from the owner.
 
 ## Known advisories
 
