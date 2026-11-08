@@ -1,0 +1,9 @@
+# STE: a procedural sentence has 20 words or fewer.
+# Procedures are written as list items (see AGENTS.md), so inside a list item
+# the 20-word limit is an error. Prose keeps the warning in ProcedureSentenceLength.
+extends: occurrence
+message: "Procedure step has more than 20 words. Split it (STE: procedural limit 20)."
+level: error
+scope: list
+max: 20
+token: '[^\s]+'
