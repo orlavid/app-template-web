@@ -4,7 +4,7 @@
  */
 export default {
   extends: ['stylelint-config-standard'],
-  ignoreFiles: ['dist/**', 'coverage/**', 'playwright-report/**', 'test-results/**'],
+  ignoreFiles: ['src/styles/vendor/**', 'dist/**', 'coverage/**', 'playwright-report/**', 'test-results/**'],
   rules: {
     'color-no-hex': true,
     'at-rule-no-unknown': [

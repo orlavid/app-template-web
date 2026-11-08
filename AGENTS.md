@@ -77,6 +77,7 @@ Specs live in `specs/NNN-name/`. `NNN` is a three-digit number. Spec Kit creates
 
 - Use shadcn/ui primitives for buttons, dialogs, forms, menus and tables. Do not make these controls from plain HTML elements.
 - Add a primitive with `npx shadcn@4.23.0 add <name>`. The primitive goes into `src/components/ui/`.
+- Do not add `shadcn` to `package.json`. Use the pinned `npx` command. The CSS helpers are in `src/styles/vendor/shadcn-tailwind.css`.
 - Put product components in `src/components/<feature>/`.
 - Product components use the primitives. They never import Radix. ESLint stops a Radix import outside `src/components/ui/`.
 - Keep edits to `src/components/ui/` small. Put a `// local change:` comment above each edit, with the reason.

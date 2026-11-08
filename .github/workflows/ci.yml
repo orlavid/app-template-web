@@ -29,6 +29,8 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
+      - name: npm audit (all severities)
+        run: npm audit --audit-level=low
       - name: Typecheck
         run: npm run typecheck
       - name: ESLint
