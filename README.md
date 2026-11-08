@@ -84,3 +84,12 @@ To add a project term:
 1. Add the term and its sense to `docs/glossary.md`.
 2. Add the term to `.vale/styles/config/vocabularies/Project/accept.txt`.
 3. Run `npm run docs:lint`.
+
+## Known advisories
+
+`npm audit` reports 3 low findings in `deepmerge` (version `4.3.1`). The shadcn CLI uses it.
+No fixed version of `deepmerge` exists. The CLI runs only on a developer machine. The
+application bundle does not contain it.
+
+An override in `package.json` sets `minimatch` to version `11.0.5` or later. This override
+removes the `minimatch` advisory.
