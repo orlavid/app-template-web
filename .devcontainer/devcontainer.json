@@ -1,0 +1,12 @@
+{
+  "name": "app-template-web",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm@sha256:7dd2504a6a3c37d493a05f89b0b9e3bcae0456e5aef1c489a83835b116f93b1c",
+  "forwardPorts": [5173, 4173],
+  "postCreateCommand": "npm ci",
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "stylelint.vscode-stylelint", "bradlc.vscode-tailwindcss"]
+    }
+  }
+}
