@@ -17,6 +17,9 @@ Report each vulnerability privately through GitHub Security Advisories:
 5. Write the effect that an attacker can get.
 6. Submit the report.
 
+Use this link to open the private report form:
+<https://github.com/orlavid/app-template-web/security/advisories/new>.
+
 ## What we do
 
 - We reply to your report within 3 working days.
