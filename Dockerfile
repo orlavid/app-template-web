@@ -2,7 +2,7 @@
 # Static build of the application, served by an unprivileged nginx.
 # Base images are pinned by digest; Dependabot (docker ecosystem) updates them.
 
-FROM --platform=$BUILDPLATFORM node:22.22.3-alpine3.23@sha256:968df39aedcea65eeb078fb336ed7191baf48f972b4479711397108be0966920 AS build
+FROM --platform=$BUILDPLATFORM node:26.13.0-alpine3.23@sha256:44a3247313f9bc069a4ec25d01b66254ed7dc4d0408727d8720dc827f0753423 AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --no-audit --no-fund
